@@ -1,26 +1,22 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
-
+# importing needed packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
+# setting up names for columns
 colnames = ['AccountStatus','Duration','CreditHistory','Purpose','CreditAmount',
             'Savings','EmploymentDuration','InstallmentRatePercent',
             'PersonalStatusAndSex','OtherDebtors','ResidenceDuration',
             'Property','Age','OtherInstallment','Housing','CreditsInThisBank','Job',
             'NumberOfPeopleLiableToMaintenance','Telephone','Foreign','Decision']
 
+# importing data
 data = pd.read_csv(r"data\german.data",delimiter=" ",
                    names=colnames)
-
+# changing data to dataframe
 df = pd.DataFrame(data)
 
+# changing values to be more readable for every column
 df['AccountStatus'].replace({'A11':'0 DM',
                              'A12':'<200 DM',
                              'A13':'>=200 DM',
@@ -90,5 +86,5 @@ df['Telephone'].replace({'A191':'none',
 df['Foreign'].replace({'A201':'yes',
                        'A202':'no'}, inplace=True)
 
-
+# saving changed data to cleaned_data.csv
 df.to_csv(r'C:\Users\Artur\Desktop\projekt\cleaned_data.csv')
